@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter for You</title>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --paper-color: #fdfcf8;
+            --text-color: #2c2c2c;
+            --accent-color: #7d6352;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            color: var(--paper-color);
+        }
+
+        /* Initial View */
+        #envelope-container {
+            text-align: center;
+            transition: opacity 1s ease;
+        }
+
+        .open-button {
+            background: none;
+            border: 1px solid var(--paper-color);
+            color: var(--paper-color);
+            padding: 15px 30px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .open-button:hover {
+            background: var(--paper-color);
+            color: var(--bg-color);
+        }
+
+        /* The Letter View */
+        #letter {
+            display: none;
+            background-color: var(--paper-color);
+            color: var(--text-color);
+            width: 90%;
+            max-width: 600px;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.5s ease;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+        }
+
+        .signature {
+            margin-top: 50px;
+            font-style: italic;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="envelope-container">
+        <p style="margin-bottom: 20px; font-style: italic; opacity: 0.8;">To someone special...</p>
+        <button class="open-button" onclick="revealLetter()">READ LETTER</button>
+    </div>
+
+    <div id="letter">
+        <h1>To [Name],</h1>
+        
+        <p>
+            I’ve been thinking a lot about what we have... [This is where you write your heartfelt message. Use as many paragraphs as you need.]
+        </p>
+        
+        <p>
+            [Your second paragraph...]
+        </p>
+        <div class="signature">
+            Yours always,<br>
+            [Your Name]
+        </div>
+    </div>
+
+    <script>
+        function revealLetter() {
+            document.getElementById('envelope-container').style.display = 'none';
+            const letter = document.getElementById('letter');
+            letter.style.display = 'block';
+            setTimeout(() => {
+                letter.style.opacity = '1';
+                letter.style.transform = 'translateY(0)';
+            }, 100);
+        }
+    </script>
+</body>
+</html>
